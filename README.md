@@ -15,7 +15,7 @@ then:
   id: login
   with_headers:
     X-Parameter: magic
-  and_send: '{ "email": "mr.frodo@lotr.com", "password": "{{ .password }}" }'
+  and_send: '{ "email": "{{ .email }}", "password": "{{ .password }}" }'
 where:
   email: mr.frodo@lotr.com
   password: $PASSWORD
@@ -23,4 +23,4 @@ where:
 
 2 - On another terminal start the echo server with `$ httpreq echo`;
 
-2 - Then run `$ PASSWORD=123456 httpreq exec example.yml`;
+3 - Then run `$ PASSWORD=123456 httpreq exec example.yml`;

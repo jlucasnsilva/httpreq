@@ -33,7 +33,7 @@ var (
 			{
 				ID:      "login",
 				Call:    "POST /api/v1/login",
-				Payload: `{ "email": "mr.frodo@lotr.com", "password": "{{ .password }}" }`,
+				Payload: `{ "email": "{{ .email }}", "password": "{{ .password }}" }`,
 				Header: map[string]string{
 					"X-Parameter": "magic",
 				},
