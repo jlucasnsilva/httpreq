@@ -110,8 +110,9 @@ func createRequests(g *Group) (map[string]requestOption, error) {
 			continue
 		}
 
-		req.Header.Set("Content-type", "application/json; charset=utf-8")
 		addHeader(req.Header, g.Config.Header, c.Header)
+		setContentType(req.Header)
+
 		m[id] = requestOption{Request: req}
 	}
 	return m, nil
@@ -156,6 +157,15 @@ func joinURL(base, uri string) string {
 		return base + u
 	}
 	return base + "/" + u
+}
+
+func setContentType(header http.Header) {
+	for k := range header {
+		if strings.ToLower(k) == "content-type" {
+			return
+		}
+	}
+	header.Set("Content-type", "application/json; charset=utf-8")
 }
 
 func addHeader(header http.Header, globalHeader, callHeader map[string]string) {
