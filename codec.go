@@ -102,6 +102,16 @@ func parse(afs afero.Fs, filename string) (*Group, error) {
 		return nil, fmt.Errorf("parse: group unmarshalling error: %v", err)
 	}
 	g.Macros = macros
+
+	ids := make(map[string]int)
+	for i, call := range g.EndpointCalls {
+		j, ok := ids[call.ID]
+		if ok {
+			err := fmt.Errorf("parse: error: the %vth and the %vth calls have the same id", j+1, i+1)
+			return nil, err
+		}
+		ids[call.ID] = i
+	}
 	return g, nil
 }
 
