@@ -23,4 +23,4 @@ where:
 
 2 - On another terminal start the echo server with `$ httpreq echo`;
 
-2 - Then run `$ PASSWORD=123456 httpreq exec index.yml`;
+2 - Then run `$ PASSWORD=123456 httpreq exec example.yml`;
