@@ -64,7 +64,7 @@ func exexuteAll(g *Group) {
 		}
 
 		client := http.Client{Timeout: 5 * time.Second}
-		fmt.Printf("executing '%v'\n\n", reqID)
+		printID(reqID)
 		printDoResponse(client.Do(opt.Request))
 	}
 }
